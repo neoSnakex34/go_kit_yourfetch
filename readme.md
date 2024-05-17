@@ -37,7 +37,21 @@ if you download the release just run it with:
 ```shell
 ./gokityf
 ```
-(be sure you have execute rights on it, else chmod +x)
+(be sure you have execute rights on it, else chmod +x gokityf)
+NOTE: you need cat2.txt in the same folder as the executable
+
+If you want to launch it from any other folder you'll need a script:
+```run.sh```
+```shell
+    cd path/to/executable_and_txt_logo
+    ./gokityf
+```
+```shell
+chmod +x run.sh
+```
+```shell
+./run.sh
+```
 
 in order to build (you can decide the building flags):
 ```shell 

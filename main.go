@@ -44,7 +44,9 @@ const (
 func main() {
 
 	// FETCH
-	logo, err := utils.ReadFile("cat2.txt")
+
+	// NOTE logo should be parsed in utils
+	logo, err := utils.ReadFile("./cat2.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
