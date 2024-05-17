@@ -129,3 +129,17 @@ func StripAnsiEscapeSeq(line string) string {
 	}, line)
 
 }
+
+func MapStrSl(strSl []string, f func(string) string) []string {
+	stSlMapped := make([]string, len(strSl))
+	for i, str := range strSl {
+		stSlMapped[i] = f(str)
+	}
+	return stSlMapped
+}
+
+func ClearTerm() {
+	cmd := exec.Command("clear")
+	cmd.Stdout = os.Stdout
+	cmd.Run()
+}

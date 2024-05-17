@@ -13,30 +13,37 @@ const (
 	Italic    = "\033[3m"
 	Underline = "\033[4m"
 
-	// Colori principali del tema Catppuccin Macchiato
-	Text     = "\033[38;2;205;214;244m"
-	Subtext0 = "\033[38;2;180;190;254m"
-	Subtext1 = "\033[38;2;166;173;206m"
-	Overlay0 = "\033[38;2;147;153;178m"
-	Overlay1 = "\033[38;2;132;138;163m"
-	Overlay2 = "\033[38;2;124;130;154m"
-	Surface0 = "\033[38;2;89;95;123m"
-	Surface1 = "\033[38;2;79;85;113m"
-	Surface2 = "\033[38;2;70;76;104m"
-	Base     = "\033[38;2;59;66;82m"
-	Mantle   = "\033[38;2;48;54;68m"
-	Crust    = "\033[38;2;37;43;56m"
-
-	// Accenti
-	Blue   = "\033[38;2;103;141;217m"
-	Green  = "\033[38;2;166;218;149m"
-	Pink   = "\033[38;2;243;139;168m"
-	Red    = "\033[38;2;237;135;150m"
-	Yellow = "\033[38;2;229;200;144m"
+	Rosewater = "\033[38;2;244;219;214m"
+	Flamingo  = "\033[38;2;240;198;198m"
+	Pink      = "\033[38;2;245;189;230m"
+	Mauve     = "\033[38;2;198;160;246m"
+	Red       = "\033[38;2;237;135;150m"
+	Maroon    = "\033[38;2;238;153;160m"
+	Peach     = "\033[38;2;245;169;127m"
+	Yellow    = "\033[38;2;238;212;159m"
+	Green     = "\033[38;2;166;218;149m"
+	Teal      = "\033[38;2;139;213;202m"
+	Sky       = "\033[38;2;145;215;227m"
+	Sapphire  = "\033[38;2;125;196;228m"
+	Blue      = "\033[38;2;138;173;244m"
+	Lavender  = "\033[38;2;183;189;248m"
+	Text      = "\033[38;2;202;211;245m"
+	Subtext1  = "\033[38;2;184;192;224m"
+	Subtext0  = "\033[38;2;165;173;203m"
+	Overlay2  = "\033[38;2;147;154;183m"
+	Overlay1  = "\033[38;2;128;135;162m"
+	Overlay0  = "\033[38;2;110;115;141m"
+	Surface2  = "\033[38;2;91;96;120m"
+	Surface1  = "\033[38;2;73;77;100m"
+	Surface0  = "\033[38;2;54;58;79m"
+	Base      = "\033[38;2;36;39;58m"
+	Mantle    = "\033[38;2;30;32;48m"
+	Crust     = "\033[38;2;24;25;38m"
 )
 
 func main() {
 
+	// FETCH
 	logo, err := utils.ReadFile("cat2.txt")
 	if err != nil {
 		log.Fatal(err)
@@ -61,33 +68,45 @@ func main() {
 		log.Fatal(err)
 	}
 
-	shell := utils.GetShell()
+	shellName := utils.GetShell()
 
-	uptime, err := utils.GetUpTime()
+	uptimeValue, err := utils.GetUpTime()
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	info := []string{distroName, kernelVers, shell, uptime}
+	// ORGANIZE AND STYLE
+	home := "" + Bold + Yellow + userAtHost[0] + Reset + Bold + "@" + Green + userAtHost[1] + Reset
+	distro := "on: " + Bold + Teal + distroName + Reset
+	kernel := "kl: " + Bold + Sky + kernelVers + Reset
+	shell := "sh: " + Bold + Sapphire + shellName + Reset
+	uptime := "up: " + Bold + Blue + uptimeValue + Reset
 
-	maxLogoLineLength := utils.GetMaxLogoLineLenght(logo)
+	info := []string{distro, kernel, shell, uptime}
+
+	// TODO prettify logo
+
+	maxLenLogoLine := utils.GetMaxLogoLineLenght(logo)
 	max_info := len(info)
 
-	fmt.Printf("%*s%s\n", maxLogoLineLength, "", bold+cattppuccin_purple+userAtHost[0]+reset+"@"+bold+cattppuccin_purple+userAtHost[1]+reset)
+	// PRINT
+	utils.ClearTerm()
+	fmt.Println()
+	fmt.Printf("  %*s    %s\n\n", maxLenLogoLine, "", home)
+
 	// note that actual design is tied to 4 lines tall logo and for lines info, but it is kinda scalable
 	// so i keep the checks for logo and info length
 	for i, line := range logo {
 
-		// print logo line
-		// fmt.Print(line)
-
-		// if info print info
 		if i < max_info {
-			padding := maxLogoLineLength - utils.LenLogoLine(line)
+			padding := maxLenLogoLine - utils.LenLogoLine(line)
 
-			fmt.Printf("%s%*s%s\n", line, padding, "", info[i])
-		}
+			fmt.Printf("  %s%*s%s\n", line, padding, "", info[i])
+		} // else this would be a mess, need to add some controls
+		// and modularize in order to add support for more lines
+		// in logo and info
 
 	}
+	fmt.Println()
 
 }
