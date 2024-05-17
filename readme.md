@@ -14,3 +14,10 @@ unfortunately not, i wrote it for alacritty that does not support real images vi
 ## Will it work on my distro?
 it should, i tested it in some barebone containers, but i did not tested it on my others machines yet. 
 ![this should definitely be an image](imgs/containers.png)
+(yeah i know i could have used tmux instead of 4 instances of alacritty, but those sexy gaps...)
+
+## Can i use a different colorscheme? 
+you can, but you need to code it youself and swap all the constants with ansi escape codes, it can be modularized to read those constants from a json or a txt tho, i'm just too lazy to do it right now. Shoulde be a nice TODO [ ] tho.
+
+## So... how do i use it?
+`Code
