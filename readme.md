@@ -16,11 +16,17 @@ it should, i tested it in some barebone containers, but i did not tested it on m
 ![this should definitely be an image](imgs/containers.png)
 (yeah i know i could have used tmux instead of 4 instances of alacritty, but those sexy gaps...)
 
+## Will it work on [pick name] OS?
+I don't think so, this is a gnu+linux utility, it wont surely work on windows, and probably won't work on osx either (of course not without any tweaking)
+
+## Can i use it on ARM?
+Unfortunately i did not tested it on any arm device, but you could give it a shot and let me know!
+
 ## Can i use a different colorscheme? 
-you can, but you need to modify the code youself and swap all the constants with ansi escape codes, it can be modularized to read those constants from a json or a txt tho, i'm just too lazy to do it right now. Shoulde be a nice TODO [ ] tho.
+You can, but you need to modify the code youself and swap all the constants with ansi escape codes, it can be modularized to read those constants from a json or a txt tho, i'm just too lazy to do it right now. Shoulde be a nice TODO [ ] tho.
 
 ## So... how do i use it?
-you can:
+You can:
     - build it from source 
     - pick up a release
 
