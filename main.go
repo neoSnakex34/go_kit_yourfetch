@@ -68,7 +68,10 @@ func main() {
 		log.Fatal(err)
 	}
 
-	shellName := utils.GetShell()
+	shellName, err := utils.GetShell()
+  if err != nil {
+    log.Fatal(err)
+  }
 
 	uptimeValue, err := utils.GetUpTime()
 	if err != nil {

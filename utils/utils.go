@@ -77,15 +77,28 @@ func GetKernelVers() (string, error) {
 
 }
 
-func GetShell() string {
-	shell := os.Getenv("SHELL")
-	if shell == "" {
-		return "unknown"
-	}
+// func GetShell() string {
+// 	shell := os.Getenv("SHELL")
+// 	if shell == "" {
+// 		return "unknown"
+// 	}
+//
+// 	return shell
+//
+// }
+// TODO log errors...
+func GetShell() (string, error) {
 
-	return shell
-
+  shell_command := exec.Command("/bin/sh", "-c", "echo $SHELL")
+  
+  shell, err := shell_command.Output()
+  if err != nil {
+    return "unknown", err
+  }
+	return strings.TrimSpace(string(shell)), nil
 }
+
+
 
 func GetUpTime() (string, error) {
 	shell_command := exec.Command("uptime", "-p")
