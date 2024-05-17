@@ -17,7 +17,16 @@ it should, i tested it in some barebone containers, but i did not tested it on m
 (yeah i know i could have used tmux instead of 4 instances of alacritty, but those sexy gaps...)
 
 ## Can i use a different colorscheme? 
-you can, but you need to code it youself and swap all the constants with ansi escape codes, it can be modularized to read those constants from a json or a txt tho, i'm just too lazy to do it right now. Shoulde be a nice TODO [ ] tho.
+you can, but you need to modify the code youself and swap all the constants with ansi escape codes, it can be modularized to read those constants from a json or a txt tho, i'm just too lazy to do it right now. Shoulde be a nice TODO [ ] tho.
 
 ## So... how do i use it?
-`Code
+you can:
+    - build it from source 
+    - pick up a release
+
+if you build from source you'll need:
+    - go [version > 18]
+    
+in order to build:
+```git clone https://github.com/neoSnakex34/go_kit_yourfetch```
+    
