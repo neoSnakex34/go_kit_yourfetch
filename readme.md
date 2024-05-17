@@ -26,7 +26,34 @@ you can:
 
 if you build from source you'll need:
     - go [version > 18]
-    
-in order to build:
-```git clone https://github.com/neoSnakex34/go_kit_yourfetch```
-    
+
+if you download the release just run it with:
+```shell
+./gokityf
+```
+(be sure you have execute rights on it, else chmod +x)
+
+in order to build (you can decide the building flags):
+```shell 
+git clone https://github.com/neoSnakex34/go_kit_yourfetch
+
+cd go_kit_yourfetch
+
+go build main.go
+
+```
+then run with:
+```shell
+./main
+
+```
+
+
+if you just want to test it:
+```shell
+git clone https://github.com/neoSnakex34/go_kit_yourfetch
+
+cd go_kit_yourfetch
+
+go run main.go
+```
